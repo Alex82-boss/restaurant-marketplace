@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0e13;
+  color: #fff;
+}
+
+header {
+  padding: 15px;
+  text-align: center;
+  background: #111;
+}
+
+.container {
+  padding: 15px;
+}
+
+.card {
+  background: #161b26;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #00aaff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+}
