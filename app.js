@@ -1,50 +1,62 @@
-const map = L.map('map').setView([6.5244, 3.3792], 12);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: ''
-}).addTo(map);
-
 const restaurants = [
-  {
-    name: "Prime Kitchen",
-    lat: 6.5244,
-    lng: 3.3792
-  },
-  {
-    name: "Ocean Flame",
-    lat: 6.5350,
-    lng: 3.3500
-  },
-  {
-    name: "Spice Terrace",
-    lat: 6.5100,
-    lng: 3.3900
-  }
+{
+name:"Prime Kitchen",
+rating:"4.9",
+time:"14 min",
+badge:"Priority",
+image:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+},
+{
+name:"Ocean Flame",
+rating:"4.8",
+time:"18 min",
+badge:"Trending",
+image:"https://images.unsplash.com/photo-1552566626-52f8b828add9"
+},
+{
+name:"Spice Terrace",
+rating:"4.7",
+time:"20 min",
+badge:"Top Rated",
+image:"https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
+}
 ];
 
-restaurants.forEach(r => {
-  const marker = L.marker([r.lat, r.lng]).addTo(map);
+const meals = [
+{
+name:"Jollof Deluxe",
+price:"₦4,500",
+image:"https://images.unsplash.com/photo-1544025162-d76694265947"
+},
+{
+name:"Chicken Supreme",
+price:"₦5,800",
+image:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+}
+];
 
-  marker.bindPopup(`
-    <b>${r.name}</b><br>
-    <button onclick="openRestaurant('${r.name}')">
-      Open
-    </button>
-  `);
-});
+function createCard(item, containerId){
+const container = document.getElementById(containerId);
 
-function openRestaurant(name){
-  alert("Opening " + name + " page");
+container.innerHTML += `
+<div class="card">
+<div class="card-image" style="background-image:url('${item.image}')"></div>
+<div class="card-body">
+<div class="card-title">${item.name}</div>
+<div class="card-meta">
+⭐ ${item.rating || item.price} • ${item.time || ""}
+</div>
+${item.badge ? `<span class="badge">${item.badge}</span>` : ""}
+</div>
+</div>
+`;
 }
 
-document.getElementById("search").addEventListener("input", e => {
-  const value = e.target.value.toLowerCase();
+restaurants.forEach(r=>{
+createCard(r,"priorityGrid");
+createCard(r,"liveGrid");
+});
 
-  const found = restaurants.find(r =>
-    r.name.toLowerCase().includes(value)
-  );
-
-  if(found){
-    map.setView([found.lat, found.lng], 15);
-  }
+meals.forEach(m=>{
+createCard(m,"mealGrid");
 });
