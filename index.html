@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Marketplace</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Marketplace</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header>Food Marketplace</header>
+<header>
+  <span class="logo">🍽 FoodMarket</span>
+  <p class="tagline">Explore restaurants across regions & states</p>
+</header>
 
-<div class="container" id="restaurants"></div>
+<div class="container">
+  <div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="Search restaurants or regions..." oninput="filterRestaurants()" />
+  </div>
+  <div class="grid" id="restaurants">
+    <p class="loading">Loading restaurants...</p>
+  </div>
+</div>
 
 <script type="module" src="main.js"></script>
 
