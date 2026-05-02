@@ -3,27 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Food Marketplace</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <title>FoodHub Marketplace</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<header>
-  <span class="logo">🍽 FoodMarket</span>
-  <p class="tagline">Explore restaurants across regions & states</p>
+<header class="navbar">
+  <div class="logo">FoodHub</div>
+
+  <div class="search-wrapper">
+    <input type="text" placeholder="Search restaurants, meals..." />
+  </div>
+
+  <div class="nav-actions">
+    <button class="ghost-btn">Login</button>
+    <button class="primary-btn">Cart</button>
+  </div>
 </header>
 
-<div class="container">
-  <div class="filter-bar">
-    <input type="text" id="searchInput" placeholder="Search restaurants or regions..." oninput="filterRestaurants()" />
+<section class="hero">
+  <div class="hero-content">
+    <h1>Premium food delivery.<br>Real-time ordering.</h1>
+    <p>
+      Discover restaurants, order instantly, and track every delivery live.
+    </p>
+    <button class="primary-btn large-btn">Start Ordering</button>
   </div>
-  <div class="grid" id="restaurants">
-    <p class="loading">Loading restaurants...</p>
-  </div>
-</div>
+</section>
 
-<script type="module" src="main.js"></script>
+<section class="section">
+  <div class="section-header">
+    <h2>Popular Restaurants</h2>
+    <button class="ghost-btn">View All</button>
+  </div>
+
+  <div id="restaurants" class="restaurant-grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Featured Meals</h2>
+  </div>
+
+  <div id="menus" class="menu-grid"></div>
+</section>
+
+<nav class="mobile-nav">
+  <button>Home</button>
+  <button>Orders</button>
+  <button>Profile</button>
+</nav>
+
+<script type="module" src="app.js"></script>
 
 </body>
-</html>
+  </html>
