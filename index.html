@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoodHub Map</title>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-<link rel="stylesheet" href="styles.css"/>
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodHub X</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
 <header class="navbar">
-  <div class="logo">FoodHub</div>
+  <div class="logo">FoodHub X</div>
 
-  <input id="search" type="text" placeholder="Search restaurant..." />
+  <div class="nav-center">
+    <input type="text" id="searchInput" placeholder="What would you like delivered?" />
+  </div>
+
+  <div class="nav-right">
+    <button class="ghost-btn">Orders</button>
+    <button class="primary-btn">Profile</button>
+  </div>
 </header>
 
-<div id="map"></div>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Fast. Intelligent.<br>Frictionless.</h1>
+    <p>
+      Precision food commerce built for modern urban delivery.
+    </p>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <div class="chips">
+      <button>Fast Delivery</button>
+      <button>Top Rated</button>
+      <button>Trending</button>
+      <button>Premium Meals</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Priority Access</h2>
+    <span>Partner promoted restaurants</span>
+  </div>
+  <div id="priorityGrid" class="grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Live Demand</h2>
+    <span>Most ordered right now</span>
+  </div>
+  <div id="liveGrid" class="grid"></div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Precision Picks</h2>
+    <span>Recommended meals</span>
+  </div>
+  <div id="mealGrid" class="grid"></div>
+</section>
+
+<footer class="mobile-nav">
+  <button>Home</button>
+  <button>Search</button>
+  <button>Orders</button>
+  <button>Profile</button>
+</footer>
+
 <script src="app.js"></script>
-
 </body>
-</html>
+  </html>
