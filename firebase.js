@@ -5,7 +5,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 const firebaseConfig = {
   apiKey: "YOUR_KEY",
   authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_ID"
+  projectId: "food-hub-bd716"
 };
 
 const app = initializeApp(firebaseConfig);
