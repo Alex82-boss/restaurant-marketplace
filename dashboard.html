@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodHub X — Rep Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div id="pageContent" style="display:none">
+
+  <header class="navbar">
+    <div class="nav-logo">FoodHub X</div>
+    <span class="rep-badge">Restaurant Rep</span>
+    <div class="nav-actions">
+      <span id="repName" class="nav-username"></span>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+
+    <!-- LEFT: Restaurant Info + Menu List -->
+    <div class="dash-main">
+
+      <div id="noRestaurantMsg" style="display:none">
+        <div class="empty-state">
+          <h2>You have no restaurant assigned yet.</h2>
+          <p>An admin needs to assign your account to a restaurant. Contact support if this is an error.</p>
+          <a href="mailto:support@foodhubx.com" class="primary-btn">Contact Support</a>
+        </div>
+      </div>
+
+      <div id="restaurantInfo" style="display:none">
+        <div class="dash-section-header">
+          <div>
+            <h2 id="dashRestaurantName">Your Restaurant</h2>
+            <p id="dashRestaurantMeta" class="muted-text"></p>
+          </div>
+          <button class="ghost-btn" onclick="openEditRestaurant()">Edit Info</button>
+        </div>
+
+        <div class="dash-section-header" style="margin-top:32px">
+          <h3>Menu Items</h3>
+          <button class="primary-btn" onclick="openAddItem()">+ Add Item</button>
+        </div>
+
+        <div id="menuList" class="menu-list">
+          <p class="loading-msg">Loading menu...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Add / Edit Form Panel -->
+    <div class="dash-sidebar">
+
+      <!-- Add/Edit Menu Item Form -->
+      <div class="form-card" id="itemForm" style="display:none">
+        <h3 id="itemFormTitle">Add Menu Item</h3>
+        <input class="auth-input" type="text"   id="itemName"        placeholder="Item name"/>
+        <input class="auth-input" type="text"   id="itemDescription" placeholder="Short description (optional)"/>
+        <input class="auth-input" type="number" id="itemPrice"       placeholder="Price (₦)"/>
+        <input class="auth-input" type="text"   id="itemCategory"    placeholder="Category (e.g. Rice, Drinks)"/>
+        <input class="auth-input" type="url"    id="itemImage"       placeholder="Image URL (optional)"/>
+
+        <div class="form-actions">
+          <button class="primary-btn" onclick="saveItem()">Save Item</button>
+          <button class="ghost-btn"   onclick="closeItemForm()">Cancel</button>
+        </div>
+        <p id="itemFormError" class="error-msg"></p>
+        <p id="itemFormSuccess" class="success-msg"></p>
+      </div>
+
+      <!-- Edit Restaurant Info Form -->
+      <div class="form-card" id="restaurantForm" style="display:none">
+        <h3>Edit Restaurant Info</h3>
+        <input class="auth-input" type="text" id="editName"         placeholder="Restaurant name"/>
+        <input class="auth-input" type="text" id="editLocation"     placeholder="Location / Address"/>
+        <input class="auth-input" type="text" id="editRegion"       placeholder="Region (e.g. South West)"/>
+        <input class="auth-input" type="text" id="editState"        placeholder="State"/>
+        <input class="auth-input" type="text" id="editDeliveryTime" placeholder="Avg delivery time (mins)"/>
+        <input class="auth-input" type="url"  id="editImage"        placeholder="Cover image URL"/>
+
+        <div class="form-actions">
+          <button class="primary-btn" onclick="saveRestaurantInfo()">Save Changes</button>
+          <button class="ghost-btn"   onclick="closeRestaurantForm()">Cancel</button>
+        </div>
+        <p id="restaurantFormError" class="error-msg"></p>
+        <p id="restaurantFormSuccess" class="success-msg"></p>
+      </div>
+
+      <!-- Default state -->
+      <div class="form-card hint-card" id="hintCard">
+        <p>👈 Select an action to get started.<br/>Use the buttons on the left to add or update your menu items and restaurant details.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="module" src="dashboard.js"></script>
+</body>
+</html>
