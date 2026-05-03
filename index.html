@@ -1,73 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FoodHub X</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>Food Marketplace</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo">FoodHub X</div>
-
-  <div class="nav-center">
-    <input type="text" id="searchInput" placeholder="What would you like delivered?" />
-  </div>
-
-  <div class="nav-right">
-    <button class="ghost-btn">Orders</button>
-    <button class="primary-btn">Profile</button>
-  </div>
+<header>
+  <span class="logo">🍽 FoodMarket</span>
+  <p class="tagline">Explore restaurants across regions & states</p>
 </header>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Fast. Intelligent.<br>Frictionless.</h1>
-    <p>
-      Precision food commerce built for modern urban delivery.
-    </p>
-
-    <div class="chips">
-      <button>Fast Delivery</button>
-      <button>Top Rated</button>
-      <button>Trending</button>
-      <button>Premium Meals</button>
-    </div>
+<div class="container">
+  <div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="Search restaurants or regions..." oninput="filterRestaurants()" />
   </div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Priority Access</h2>
-    <span>Partner promoted restaurants</span>
+  <div class="grid" id="restaurants">
+    <p class="loading">Loading restaurants...</p>
   </div>
-  <div id="priorityGrid" class="grid"></div>
-</section>
+</div>
 
-<section class="section">
-  <div class="section-header">
-    <h2>Live Demand</h2>
-    <span>Most ordered right now</span>
-  </div>
-  <div id="liveGrid" class="grid"></div>
-</section>
+<script type="module" src="main.js"></script>
 
-<section class="section">
-  <div class="section-header">
-    <h2>Precision Picks</h2>
-    <span>Recommended meals</span>
-  </div>
-  <div id="mealGrid" class="grid"></div>
-</section>
-
-<footer class="mobile-nav">
-  <button>Home</button>
-  <button>Search</button>
-  <button>Orders</button>
-  <button>Profile</button>
-</footer>
-
-<script src="app.js"></script>
 </body>
-  </html>
+</html>
