@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodHub X — Marketplace</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Page hidden until auth check passes — prevents flicker -->
+<div id="pageContent" style="display:none">
+
+  <header class="navbar">
+    <div class="nav-logo">FoodHub X</div>
+
+    <div class="nav-search">
+      <input type="text" id="searchInput" placeholder="Search restaurants, regions, meals..." oninput="filterRestaurants()"/>
+    </div>
+
+    <div class="nav-actions">
+      <span id="navUserName" class="nav-username"></span>
+      <button class="ghost-btn" onclick="window.location.href='orders.html'">Orders</button>
+      <button class="primary-btn" onclick="window.location.href='profile.html'">Profile</button>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Fast.<br/>Intelligent.<br/>Frictionless.</h1>
+      <p>Discover premium restaurant experiences across every region.</p>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>All Restaurants</h2>
+      <div class="region-filters" id="regionFilters">
+        <button class="filter-chip active" onclick="filterByRegion('all', this)">All</button>
+        <!-- Region chips injected by app.js -->
+      </div>
+    </div>
+    <div class="grid" id="restaurantGrid">
+      <p class="loading-msg">Loading restaurants...</p>
+    </div>
+  </section>
+
+</div><!-- /pageContent -->
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
