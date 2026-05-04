@@ -3,8 +3,8 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 
 // Replace these values with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
+  apiKey: "AIzaSyC9zggpm6Zz1dBu1YUcJyDERY9r58H3lRQ",
+  authDomain: "food-hub-bd716.firebaseapp.com",
   projectId: "food-hub-bd716"
 };
 
