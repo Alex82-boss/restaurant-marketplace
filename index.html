@@ -1,29 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Food Marketplace</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <title>Food Hub — Sign In</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 </head>
-<body>
+<body class="auth-body">
 
-<header>
-  <span class="logo">🍽 FoodMarket</span>
-  <p class="tagline">Explore restaurants across regions & states</p>
-</header>
+<div class="auth-wrapper">
 
-<div class="container">
-  <div class="filter-bar">
-    <input type="text" id="searchInput" placeholder="Search restaurants or regions..." oninput="filterRestaurants()" />
+  <!-- LEFT: Brand Panel -->
+  <div class="brand-panel">
+    <div class="brand-logo">
+      <!-- Replace src with your actual logo image -->
+      <div class="logo-mark">FH</div>
+      <span class="brand-name">Food Hub</span>
+    </div>
+
+    <p class="brand-tagline">Precision food commerce.<br/>Every restaurant. Every region.</p>
+
+    <div class="brand-divider"></div>
+
+    <div class="contact-block">
+      <h4>Customer Service</h4>
+      <ul>
+        <li>
+          <span class="contact-icon">✉</span>
+          <a href="mailto:support@foodhub.com">support@foodhub.com</a>
+        </li>
+        <li>
+          <span class="contact-icon">📞</span>
+          <a href="tel:+2348000000000">+234 800 000 0000</a>
+        </li>
+        <li>
+          <span class="contact-icon">🕐</span>
+          <span>Mon – Sat, 8am – 10pm</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="brand-footer">
+      <span>© 2025 Food Hub</span>
+      <span>·</span>
+      <a href="#">Privacy</a>
+      <span>·</span>
+      <a href="#">Terms</a>
+    </div>
   </div>
-  <div class="grid" id="restaurants">
-    <p class="loading">Loading restaurants...</p>
-  </div>
-</div>
 
-<script type="module" src="main.js"></script>
+  <!-- RIGHT: Auth Card -->
+  <div class="auth-card">
 
+    <!-- Tab switcher: Login / Sign Up -->
+    <div class="auth-tabs">
+      <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" id="tabSignup" onclick="switchTab('signup')">Create Account</button>
+    </div>
+
+    <!-- ── LOGIN PANEL ── -->
+    <div id="loginPanel">
+      <h2 class="auth-title">Welcome back</h2>
+
+      <!-- Method toggle -->
+      <div class="method-toggle">
+        <button class="method-btn active" id="loginEmailBtn" onclick="switchLoginMethod('email')">Email</button>
+        <button class="method-btn" id="loginPhoneBtn" onclick="switchLoginMethod('phone')">Phone</button>
+      </div>
+
+      <!-- Email login -->
+      <div id="loginEmailForm">
+        <input class="auth-input" type="email" id="loginEmail" placeholder="Email address"/>
+        <input class="auth-input" type="password" id="loginPassword" placeholder="Password"/>
+        <button class="primary-btn full-btn" onclick="loginWithEmail()">Sign In</button>
+        <p class="forgot-link"><a href="#">Forgot password?</a></p>
+      </div>
+
+      <!-- Phone login -->
+      <div id="loginPhoneForm" style="display:none">
+        <input class="auth-input" type="tel" id="loginPhone" placeholder="+234 800 000 0000"/>
+        <button class="primary-btn full-btn" onclick="sendPhoneOTP('login')">Send OTP</button>
+        <div id="loginOTPBox" style="display:none">
+          <input class="auth-input" type="text" id="loginOTP" placeholder="Enter OTP code"/>
+          <button class="primary-btn full-btn" onclick="verifyPhoneOTP('login')">Verify & Sign In</button>
+        </div>
+        <div id="loginRecaptcha"></div>
+      </div>
+
+      <p id="loginError" class="error-msg"></p>
+    </div>
+
+    <!-- ── SIGN UP PANEL ── -->
+    <div id="signupPanel" style="display:none">
+      <h2 class="auth-title">Create account</h2>
+
+      <!-- Method toggle -->
+      <div class="method-toggle">
+        <button class="method-btn active" id="signupEmailBtn" onclick="switchSignupMethod('email')">Email</button>
+        <button class="method-btn" id="signupPhoneBtn" onclick="switchSignupMethod('phone')">Phone</button>
+      </div>
+
+      <!-- Email signup -->
+      <div id="signupEmailForm">
+        <input class="auth-input" type="text"     id="signupName"     placeholder="Full name"/>
+        <input class="auth-input" type="email"    id="signupEmail"    placeholder="Email address"/>
+        <input class="auth-input" type="password" id="signupPassword" placeholder="Password (min 6 chars)"/>
+
+        <label class="role-label">I am signing up as:</label>
+        <div class="role-picker">
+          <button class="role-btn active" id="roleCustomer" onclick="selectRole('customer')">
+            🛒<span>Customer</span>
+          </button>
+          <button class="role-btn" id="roleRep" onclick="selectRole('rep')">
+            🍽<span>Restaurant Rep</span>
+          </button>
+        </div>
+
+        <button class="primary-btn full-btn" onclick="signupWithEmail()">Create Account</button>
+      </div>
+
+      <!-- Phone signup -->
+      <div id="signupPhoneForm" style="display:none">
+        <input class="auth-input" type="text" id="signupNamePhone" placeholder="Full name"/>
+        <input class="auth-input" type="tel"  id="signupPhone"     placeholder="+234 800 000 0000"/>
+
+        <label class="role-label">I am signing up as:</label>
+        <div class="role-picker">
+          <button class="role-btn active" id="roleCustomerPhone" onclick="selectRole('customer')">
+            🛒<span>Customer</span>
+          </button>
+          <button class="role-btn" id="roleRepPhone" onclick="selectRole('rep')">
+            🍽<span>Restaurant Rep</span>
+          </button>
+        </div>
+
+        <button class="primary-btn full-btn" onclick="sendPhoneOTP('signup')">Send OTP</button>
+        <div id="signupOTPBox" style="display:none">
+          <input class="auth-input" type="text" id="signupOTP" placeholder="Enter OTP code"/>
+          <button class="primary-btn full-btn" onclick="verifyPhoneOTP('signup')">Verify & Create Account</button>
+        </div>
+        <div id="signupRecaptcha"></div>
+      </div>
+
+      <p id="signupError" class="error-msg"></p>
+    </div>
+
+  </div><!-- /auth-card -->
+</div><!-- /auth-wrapper -->
+
+<script type="module" src="auth.js"></script>
 </body>
 </html>
